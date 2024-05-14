@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.ding.kotlin.views.MyTextView
+        android:id="@+id/tv_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="Hello World!" />
+
+    <com.ding.kotlin.views.MarqueeTextView
+        android:id="@+id/tv_marquee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hello world"
+        android:textSize="18sp"
+        app:scroll_first_delay="0"
+        app:scroll_interval="2000"
+        app:scroll_mode="mode_forever" />
+
+    <Button
+        android:id="@+id/bt_test"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转测试页面"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>
