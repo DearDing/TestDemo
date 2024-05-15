@@ -3,6 +3,8 @@ package com.ding.kotlin.activity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ding.kotlin.R
 import com.ding.kotlin.databinding.ActivityViewPagerTestBinding
 import com.ding.kotlin.fragment.ColorFragment
@@ -25,13 +27,16 @@ class TestFragActivity : BaseActivity<ActivityViewPagerTestBinding>() {
         mFragmentList2.add(ColorFragment.getInstance(2, R.color.purple))
         mFragmentList2.add(ColorFragment.getInstance(3, R.color.green))
 
+        //ViewPager 的 offscreenPageLimit 默认为 1,开启预加载
 //        mDB.viewPager.offscreenPageLimit = 2 // 缓存 2n+1 个,最大为 getCount()
 //        mDB.viewPager.adapter = createFragmentPageAdapter()
 
-        mDB.viewPager.offscreenPageLimit = 2 // 缓存 2n+1 个,最大为 getCount()
-        mDB.viewPager.adapter = createFragmentStatePagerAdapter()
+//        mDB.viewPager.offscreenPageLimit = 2 // 缓存 2n+1 个,最大为 getCount()
+//        mDB.viewPager.adapter = createFragmentStatePagerAdapter()
 
-
+        //ViewPager2 的 offscreenPageLimit 默认为 -1，不开启预加载
+        mDB.viewPager2.offscreenPageLimit = 1
+        mDB.viewPager2.adapter = createFragmentStateAdapter()
     }
 
     override fun initListener() {
@@ -98,5 +103,19 @@ class TestFragActivity : BaseActivity<ActivityViewPagerTestBinding>() {
 //            }
 //        }
 //    }
+
+    private fun createFragmentStateAdapter():FragmentStateAdapter{
+        return object: FragmentStateAdapter(supportFragmentManager,lifecycle) {
+
+            override fun getItemCount(): Int {
+                return mFragmentList2.size
+            }
+
+            override fun createFragment(position: Int): Fragment {
+                return mFragmentList2[position]
+            }
+
+        }
+    }
 
 }
