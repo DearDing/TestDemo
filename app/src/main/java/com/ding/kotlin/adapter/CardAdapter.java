@@ -28,7 +28,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
     public CardAdapter(List<CardBean> cardBeanList) {
         mCardBeanList = cardBeanList;
         mRequestOptions = new RequestOptions();
-        mRequestOptions.placeholder(R.mipmap.card_default_film_bg).error(R.mipmap.card_default_film_bg).diskCacheStrategy(DiskCacheStrategy.NONE);
+        //mRequestOptions.placeholder(R.mipmap.card_default_film_bg).error(R.mipmap.card_default_film_bg).diskCacheStrategy(DiskCacheStrategy.NONE);
     }
 
     public void updateList(List<CardBean> cardBeanList){
