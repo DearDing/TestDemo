@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.dagger.hilt.android'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -33,6 +35,15 @@ android {
     buildFeatures{
         dataBinding true
         viewBinding true
+    }
+    kotlin {
+        sourceSets {
+            // 让IDE识别KSP生成的代码
+            main.kotlin.srcDirs += 'build/generated/ksp'
+        }
+    }
+    hilt {
+        enableExperimentalClasspathAggregation = true
     }
 }
 
@@ -75,4 +86,14 @@ dependencies {
 
     //# 可选，如需要缓存或者抖音预加载功能请引入此库
     implementation 'xyz.doikki.android.dkplayer:videocache:3.3.7'
+
+    //依赖注入 Hilt
+    implementation 'com.google.dagger:hilt-android:2.48'
+    ksp 'com.google.dagger:hilt-compiler:2.48'
+
+    //Lottie
+    implementation 'com.airbnb.android:lottie:6.4.1'
+
+    //flexbox
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 }

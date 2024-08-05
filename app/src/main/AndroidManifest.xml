@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -27,7 +28,19 @@
         <activity android:name=".activity.TestCoroutineActivity" />
         <activity android:name=".activity.TestActActivity" />
         <activity android:name=".activity.TestFragActivity" />
-        <activity android:name=".activity.MyCardActivity"/>
+        <activity android:name=".activity.MyCardActivity" />
+        <activity android:name=".activity.TestTouchActivity" />
+        <activity android:name=".activity.TextViewActivity" />
+        <activity android:name=".activity.TextView1Activity" />
+        <activity android:name=".activity.TestFlexBoxLayoutActivity" />
+
+        <activity
+            android:name=".activity.TestAidlActivity"
+            android:process="com.ding.client" />
+
+        <service
+            android:name=".services.PrintAidlService"
+            android:exported="true" />
 
     </application>
 
